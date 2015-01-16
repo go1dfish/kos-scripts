@@ -1,0 +1,4 @@
+SET EXPNS TO LIST(). EXPNS:ADD("Log Gravity Data"). EXPNS:ADD("Log Temperature"). EXPNS:ADD("Crew Report"). EXPNS:ADD("Observe Materials Bay").  EXPNS:ADD("Observe Mystery Goo").
+FOR EXP IN SHIP:MODULESNAMED("ModuleScienceExperiment") {
+ IF NOT (EXP:HASEVENT("Review Data")) {FOR EXPN IN EXPNS {IF EXP:HASEVENT(EXPN) {EXP:DOEVENT(EXPN).}}
+}} WAIT 1. FOR TRANS IN SHIP:MODULESNAMED("ModuleDataTransmitter") {IF TRANS:HASEVENT("TRANSMIT DATA") {TRANS:DOEVENT("TRANSMIT DATA").}}
